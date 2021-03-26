@@ -13,10 +13,30 @@ html {
 nav {
   position: fixed;
   width: 100%;
+  z-index: 3;
+  background: white;
 }
 .logo-content {
   height: 80px;
   text-align: center;
+  animation: nav-load 0.7s ease-in;
+  /* animation: fade-out 1s; */
+}
+
+@keyframes nav-load {
+  0% {
+    transform: translateY(-100%);
+    /* opacity: 100%; */
+    opacity: 0;
+  }
+  80% {
+    opacity: 0.4;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    background: blacks;
+  }
 }
 .logo-content .logo-title {
   font-family: "Raleway", sans-serif;
@@ -32,19 +52,25 @@ nav {
 
 /* mobile menu */
 .menuicon-wrap {
-  /* display: none; */
-  width: 60px;
-  height: 60px;
-  padding: 5px;
-  background: gray;
+  position: absolute;
+  right: 0;
+  margin: 10px 10px 0 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 35px;
+  display: none;
+  /* padding: 5px; */
+  /* background: gray; */
 }
 nav input[id="menuicon"] {
   display: none;
 }
 nav input[id="menuicon"] + label {
   display: block;
-  width: 60px;
-  height: 40px;
+  width: 35px;
+  height: 25px;
   position: relative;
   cursor: pointer;
 }
@@ -53,10 +79,11 @@ nav input[id="menuicon"] + label span {
   display: block;
   position: absolute;
   width: 100%;
-  height: 8px;
+  height: 4px;
   border-radius: 30px;
   background: #000;
   transition: all 0.3s;
+  z-index: 2;
 }
 
 input[id="menuicon"] + label span:nth-child(1) {
@@ -80,6 +107,20 @@ input[id="menuicon"]:checked + label span:nth-child(2) {
 input[id="menuicon"]:checked + label span:nth-child(3) {
   bottom: 50%;
   transform: translateY(50%) rotate(-45deg);
+}
+
+div[class="sidebar"] {
+  width: 300px;
+  height: 100%;
+  background: #222;
+  position: fixed;
+  top: 0;
+  right: -300px;
+  z-index: 1;
+  transition: all 0.2s;
+}
+input[id="menuicon"]:checked + label + div {
+  right: 0;
 }
 
 /* body */
@@ -106,7 +147,7 @@ section::before {
 
 nav ul {
   width: 100%;
-  background: #000;
+  background: gray;
   height: 50px;
   margin: 0;
   padding: 0;
@@ -120,6 +161,9 @@ nav ul li {
   list-style: none;
   color: white;
   transition: 0.5s;
+  width: auto;
+  /* padding: 0 10%; */
+  /* width: 100%; */
 }
 nav ul li a {
   color: #fff;
@@ -128,10 +172,58 @@ nav ul li a {
   font-weight: bold;
   text-transform: uppercase;
   text-decoration: none;
+  padding: 15px 20px;
 }
-ul:hover li {
+nav ul:hover li {
   filter: blur(2px);
 }
-ul li:hover {
+nav ul li:hover {
   filter: none;
+}
+
+/* home */
+#home img {
+  width: 100%;
+}
+.main-laptop {
+  width: 45%;
+  position: absolute;
+  top: 30%;
+  left: 15%;
+  /* opacity: 0; */
+  z-index: 0;
+}
+.main-tablet {
+  width: 20%;
+  position: absolute;
+  top: 40%;
+  left: 40%;
+}
+
+.main-phone {
+  width: 10%;
+  position: absolute;
+  top: 45%;
+  left: 35%;
+}
+.opacity_left {
+  -webkit-animation-name: opacity_left;
+  -webkit-animation-duration: 2s;
+  -webkit-animation-fill-mode: forwards;
+  animation-name: opacity_left;
+  animation-duration: 2s;
+  animation-fill-mode: forwards;
+}
+.animation-delay {
+  -webkit-animation-delay: 0.8s;
+  animation-delay: 0.8s;
+}
+
+@media (max-width: 580px) {
+  .menuicon-wrap {
+    display: block;
+  }
+  .logo-content .logo-title {
+    font-size: 1.6rem;
+  }
 }
