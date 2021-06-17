@@ -192,31 +192,61 @@ nav ul li:hover {
   left: 15%;
   /* opacity: 0; */
   z-index: 0;
+  animation: laptop-animation 2s ease-out;
 }
+
+@keyframes laptop-animation {
+  0% {
+    transform: translatex(30%);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translatex(0);
+    opacity: 1;
+  }
+}
+
 .main-tablet {
-  width: 20%;
+  width: 15%;
   position: absolute;
-  top: 40%;
-  left: 40%;
+  top: 37%;
+  left: 15%;
+  animation: tablet-animation 2s ease-out;
+}
+@keyframes tablet-animation {
+  0% {
+    transform: translatex(-30%);
+
+    opacity: 0;
+  }
+
+  100% {
+    transform: translatex(0);
+    opacity: 1;
+  }
 }
 
 .main-phone {
-  width: 10%;
+  width: 8%;
   position: absolute;
-  top: 45%;
-  left: 35%;
+  top: 50%;
+  left: 27%;
+  animation: phone-animation 2s ease-out;
 }
-.opacity_left {
-  -webkit-animation-name: opacity_left;
-  -webkit-animation-duration: 2s;
-  -webkit-animation-fill-mode: forwards;
-  animation-name: opacity_left;
-  animation-duration: 2s;
-  animation-fill-mode: forwards;
-}
-.animation-delay {
-  -webkit-animation-delay: 0.8s;
-  animation-delay: 0.8s;
+
+@keyframes phone-animation {
+  0% {
+    transform: translateY(30%);
+
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+    background: blacks;
+  }
 }
 
 @media (max-width: 580px) {
